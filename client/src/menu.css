@@ -1,0 +1,38 @@
+.drink-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 30px;
+}
+
+.drink {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #f3f3f3;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.drink-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.drink-description {
+  flex: 1;
+}
+
+.drink-description h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.drink-description p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}

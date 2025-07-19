@@ -1,0 +1,35 @@
+.order-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.order-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-container label {
+  margin-bottom: 20px;
+}
+
+.order-container input[type="text"],
+.order-container select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.order-container button {
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
