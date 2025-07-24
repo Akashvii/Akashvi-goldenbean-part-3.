@@ -88,3 +88,11 @@ button:hover {
 .auth-nav a:hover {
   text-decoration: underline;
 }
+
+/* Highlight current page link */
+.main-nav a.active,
+.auth-nav a.active {
+  font-weight: 700;
+  text-decoration: underline;
+  color: #b87c4b; /* highlight color */
+}

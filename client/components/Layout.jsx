@@ -1,6 +1,7 @@
+// Layout.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Logo from '../assets/images/Logo.jpg'; // Adjust the path if needed
+import { NavLink } from 'react-router-dom';
+import Logo from '../assets/images/Logo.jpg';
 import '../src/index.css';
 
 export default function Layout() {
@@ -13,18 +14,18 @@ export default function Layout() {
 
       {/* Main navigation bar */}
       <nav className="main-nav">
-        <Link to="/">Home</Link> | 
-        <Link to="/about">About</Link> | 
-        <Link to="/menu">Menu</Link> | 
-        <Link to="/order">Order</Link> | 
-        <Link to="/OrderList">OrderList</Link>
+        <NavLink to="/" className={({ isActive }) => isActive ? "active" : undefined}>Home</NavLink> | 
+        <NavLink to="/about" className={({ isActive }) => isActive ? "active" : undefined}>About</NavLink> | 
+        <NavLink to="/menu" className={({ isActive }) => isActive ? "active" : undefined}>Menu</NavLink> | 
+        <NavLink to="/order" className={({ isActive }) => isActive ? "active" : undefined}>Order</NavLink> | 
+        <NavLink to="/OrderList" className={({ isActive }) => isActive ? "active" : undefined}>OrderList</NavLink>
       </nav>
 
-      {/* Secondary nav: smaller and on next line */}
+      {/* Secondary nav */}
       <div className="auth-nav"> 
-        <Link to="/signup">Sign Up</Link> |
-        <Link to="/signin">Sign In</Link> | 
-        <Link to="/signout">Sign Out</Link>
+        <NavLink to="/signup" className={({ isActive }) => isActive ? "active" : undefined}>Sign Up</NavLink> |
+        <NavLink to="/signin" className={({ isActive }) => isActive ? "active" : undefined}>Sign In</NavLink> | 
+        <NavLink to="/signout" className={({ isActive }) => isActive ? "active" : undefined}>Sign Out</NavLink>
       </div>
 
       <br />
