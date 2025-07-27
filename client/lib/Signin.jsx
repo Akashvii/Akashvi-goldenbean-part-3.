@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Card,
   CardActions,
@@ -12,8 +12,8 @@ import { styled } from '@mui/material/styles';
 import { Navigate, useLocation } from 'react-router-dom';
 import auth from './auth-helper.js';
 import { signin } from './api-auth.js';
+import { AuthContext } from './AuthContext.jsx';  // Import context
 
-// Styled components using MUI v5's styled API
 const StyledCard = styled(Card)(({ theme }) => ({
   maxWidth: 600,
   margin: 'auto',
@@ -35,6 +35,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
 
 export default function Signin() {
   const location = useLocation();
+  const { login } = useContext(AuthContext);   // Access context
 
   const [values, setValues] = useState({
     email: '',
@@ -44,25 +45,23 @@ export default function Signin() {
   });
 
   const clickSubmit = () => {
-  const user = {
-    email: values.email || undefined,
-    password: values.password || undefined
+    const user = {
+      email: values.email || undefined,
+      password: values.password || undefined
+    };
+
+    signin(user).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        // Save to localStorage and context
+        auth.authenticate(data, () => {
+          login(data.user);  
+          setValues({ ...values, error: '', redirectToReferrer: true });
+        });
+      }
+    });
   };
-
-  console.log("Submitting:", user); // Debug log
-
-  signin(user).then((data) => {
-    console.log("Sign-in response:", data); // Debug log
-    if (data.error) {
-      setValues({ ...values, error: data.error });
-    } else {
-      auth.authenticate(data, () => {
-        setValues({ ...values, error: '', redirectToReferrer: true });
-      });
-    }
-  });
-};
-
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });

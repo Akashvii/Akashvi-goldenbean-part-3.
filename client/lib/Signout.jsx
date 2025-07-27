@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
-import auth from './auth-helper.js';
-import { signout } from './api-auth.js';
+import React, { useContext, useEffect } from "react";
+import { AuthContext } from "./AuthContext.jsx";
 
 export default function Signout() {
+  const { logout } = useContext(AuthContext);
+
   useEffect(() => {
-    signout().then(() => {
-      auth.clearJWT(() => {
-        console.log("Signed out successfully");
-      });
-    });
+    logout(); // instantly clears navbar + user
   }, []);
 
-  // Redirect to homepage after signout
-  return <Navigate to="/" />;
+  return <p>You have been signed out successfully.</p>;
 }
